@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>海外仓入参设置 - 原型</title>
+  <link rel="stylesheet" href="css/common.css" />
+</head>
+<body>
+  <div class="layout">
+    <div class="page-header">
+      <h1>海外仓入参设置</h1>
+    </div>
+
+    <div class="card">
+      <form class="search-row" id="searchForm" action="index.html" method="get">
+        <input type="hidden" name="pageSize" id="searchPageSize" value="10" />
+        <div class="form-item">
+          <label>海外仓</label>
+          <input type="text" name="warehouse" list="warehouse-list" placeholder="下拉选择或输入" value="" />
+          <datalist id="warehouse-list">
+            <option value="美西仓"></option>
+            <option value="欧洲仓"></option>
+            <option value="英国仓"></option>
+            <option value="澳洲仓"></option>
+          </datalist>
+        </div>
+        <div class="form-item">
+          <label>字段名称</label>
+          <input type="text" name="fieldName" class="w-md" placeholder="请输入字段名称" />
+        </div>
+        <div class="btn-group">
+          <button type="submit" class="btn btn-primary">查询</button>
+          <a href="index.html" class="btn">重置</a>
+        </div>
+      </form>
+    </div>
+
+    <div class="card">
+      <div class="toolbar toolbar-end">
+        <a href="add.html" class="btn btn-primary">+ 新增</a>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>海外仓</th>
+            <th>字段名称</th>
+            <th>字段类型</th>
+            <th>是否固定选项</th>
+            <th>固定选项</th>
+            <th>默认系统取值</th>
+            <th>排列顺序</th>
+            <th>状态</th>
+            <th>添加人</th>
+            <th>添加时间</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+
+      <div class="table-footer">
+        <div class="pagination" id="pagination"></div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="proto-nav">
+    <strong>原型页面导航</strong>
+    <a href="index.html">① 海外仓入参设置</a>
+    <a href="add.html">② 新增页</a>
+    <a href="edit.html?id=1">③ 修改页（示例）</a>
+  </nav>
+  <script src="js/data-store.js"></script>
+  <script src="js/list-page.js"></script>
+</body>
+</html>
