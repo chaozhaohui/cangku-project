@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>新增入参 - 海外仓入参设置</title>
+  <link rel="stylesheet" href="css/common.css" />
+</head>
+<body>
+  <div class="layout">
+    <div class="page-header">
+      <h1>新增入参</h1>
+    </div>
+
+    <div class="card">
+      <form id="fieldForm" class="form-grid">
+        <div class="form-item">
+          <label><span class="req">*</span>海外仓</label>
+          <select id="warehouse" required>
+            <option value="">请选择</option>
+            <option value="美西仓">美西仓</option>
+            <option value="欧洲仓">欧洲仓</option>
+            <option value="英国仓">英国仓</option>
+            <option value="澳洲仓">澳洲仓</option>
+          </select>
+        </div>
+        <div class="form-item">
+          <label><span class="req">*</span>字段名称</label>
+          <input type="text" id="fieldName" required placeholder="请输入字段名称" />
+        </div>
+        <div class="form-item">
+          <label><span class="req">*</span>字段类型</label>
+          <select id="fieldType" required>
+            <option value="">请选择</option>
+            <option value="integer">整数型</option>
+            <option value="string">字符串</option>
+            <option value="datetime">时间格式</option>
+          </select>
+        </div>
+        <div class="form-item">
+          <label><span class="req">*</span>是否固定选项</label>
+          <select id="isFixedOptions" required>
+            <option value="no">否</option>
+            <option value="yes">是</option>
+          </select>
+        </div>
+        <div class="form-item full" id="group-fixedOptions" style="display:none;">
+          <label><span class="req">*</span>固定选项</label>
+          <input type="text" id="fixedOptions" class="w-md" placeholder="多个选项用逗号分隔，如：A,B,C" disabled />
+          <div class="form-hint">是否固定选项为「是」时必填；多个值用英文或中文逗号分隔。</div>
+        </div>
+        <div class="form-item full" id="group-defaultSystemValue">
+          <label>默认系统取值</label>
+          <input type="text" id="defaultSystemValue" class="w-md" placeholder="是否固定选项为「否」时可设置" />
+          <div class="form-hint">仅当「是否固定选项」为「否」时可编辑；取值需符合字段类型。</div>
+        </div>
+        <div class="form-item">
+          <label><span class="req">*</span>排列顺序</label>
+          <input type="number" id="sortOrder" class="w-sm" min="0" value="10" required />
+        </div>
+        <div class="form-item">
+          <label><span class="req">*</span>状态</label>
+          <select id="status" required>
+            <option value="active">激活</option>
+            <option value="disabled">禁用</option>
+          </select>
+        </div>
+
+        <div class="form-actions full">
+          <button type="submit" class="btn btn-primary">保存</button>
+          <a href="index.html" class="btn">取消</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <nav class="proto-nav">
+    <strong>原型页面导航</strong>
+    <a href="index.html">① 海外仓入参设置</a>
+    <a href="add.html">② 新增页</a>
+    <a href="edit.html?id=1">③ 修改页（示例）</a>
+  </nav>
+  <script src="js/data-store.js"></script>
+  <script src="js/form-logic.js"></script>
+  <script>bindFormLogic('fieldForm', 'add');</script>
+</body>
+</html>

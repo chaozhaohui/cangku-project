@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>修改入参 - 海外仓入参设置</title>
+  <link rel="stylesheet" href="css/common.css" />
+</head>
+<body>
+  <div class="layout">
+    <div class="page-header">
+      <h1>修改入参</h1>
+    </div>
+
+    <div class="card">
+      <form id="fieldForm" class="form-grid">
+        <div class="form-item">
+          <label><span class="req">*</span>海外仓</label>
+          <select id="warehouse" required>
+            <option value="美西仓" selected>美西仓</option>
+            <option value="欧洲仓">欧洲仓</option>
+            <option value="英国仓">英国仓</option>
+            <option value="澳洲仓">澳洲仓</option>
+          </select>
+        </div>
+        <div class="form-item">
+          <label><span class="req">*</span>字段名称</label>
+          <input type="text" id="fieldName" value="优先级" required />
+        </div>
+        <div class="form-item">
+          <label><span class="req">*</span>字段类型</label>
+          <select id="fieldType" required>
+            <option value="integer" selected>整数型</option>
+            <option value="string">字符串</option>
+            <option value="datetime">时间格式</option>
+          </select>
+        </div>
+        <div class="form-item">
+          <label><span class="req">*</span>是否固定选项</label>
+          <select id="isFixedOptions" required>
+            <option value="no">否</option>
+            <option value="yes" selected>是</option>
+          </select>
+        </div>
+        <div class="form-item full" id="group-fixedOptions">
+          <label><span class="req">*</span>固定选项</label>
+          <input type="text" id="fixedOptions" class="w-md" value="1,2,3,5" />
+          <div class="form-hint">多个选项用逗号分隔。</div>
+        </div>
+        <div class="form-item full" id="group-defaultSystemValue" style="display:none;">
+          <label>默认系统取值</label>
+          <input type="text" id="defaultSystemValue" class="w-md" disabled />
+          <div class="form-hint">是否固定选项为「否」时可设置。</div>
+        </div>
+        <div class="form-item">
+          <label><span class="req">*</span>排列顺序</label>
+          <input type="number" id="sortOrder" class="w-sm" value="10" required />
+        </div>
+        <div class="form-item">
+          <label><span class="req">*</span>状态</label>
+          <select id="status" required>
+            <option value="active" selected>激活</option>
+            <option value="disabled">禁用</option>
+          </select>
+        </div>
+        <div class="form-item">
+          <label>添加人</label>
+          <input type="text" id="createdBy" value="张三" disabled />
+        </div>
+        <div class="form-item">
+          <label>添加时间</label>
+          <input type="text" id="createdAt" value="2026-05-20 09:15:00" disabled />
+        </div>
+
+        <div class="form-actions full">
+          <button type="submit" class="btn btn-primary">保存</button>
+          <a href="index.html" class="btn">取消</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <nav class="proto-nav">
+    <strong>原型页面导航</strong>
+    <a href="index.html">① 海外仓入参设置</a>
+    <a href="add.html">② 新增页</a>
+    <a href="edit.html?id=1">③ 修改页（示例）</a>
+  </nav>
+  <script src="js/data-store.js"></script>
+  <script src="js/form-logic.js"></script>
+  <script>
+    (function () {
+      const id = new URLSearchParams(location.search).get('id');
+      const record = getRecordById(id);
+      if (!record) {
+        alert('未找到该记录');
+        location.href = 'index.html';
+        return;
+      }
+      fillFormFromRecord(record);
+      bindFormLogic('fieldForm', 'edit', id);
+    })();
+  </script>
+</body>
+</html>
